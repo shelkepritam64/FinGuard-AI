@@ -1,0 +1,60 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.env.local
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Node and frontend dependencies/build output
+node_modules/
+dist/
+build/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and operating system files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# Large datasets and archives
+dataset/
+datasets/
+data/
+uploads/
+*.csv
+*.zip
+
+# Trained model binaries
+*.keras
+*.pkl
+
+# Jupyter checkpoint files
+.ipynb_checkpoints/
+
+# Local configuration
+.DS_Store
