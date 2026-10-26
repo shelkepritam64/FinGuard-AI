@@ -42,3 +42,23 @@ class CSVPredictionResponse(BaseModel):
     threshold_used: float
     score_type: str
     predictions: List[CSVPredictionRow]
+
+
+class SaveReportRequest(BaseModel):
+    """Payload to explicitly persist a CSV screening report."""
+    filename: str = Field(..., max_length=200, description="Target report filename")
+    csv_content: str = Field(..., description="CSV report text to persist")
+    summary: Optional[Dict[str, Any]] = Field(default=None, description="Optional metadata summary")
+
+
+class ReportMetadataResponse(BaseModel):
+    """Metadata of an explicitly saved report."""
+    report_id: Optional[str] = None
+    filename: str
+    storage_path: str
+    is_cloud: bool
+    created_at: Optional[str] = None
+    last_modified: Optional[str] = None
+    size_bytes: Optional[int] = None
+    summary: Optional[Dict[str, Any]] = None
+

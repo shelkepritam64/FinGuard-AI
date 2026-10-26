@@ -20,6 +20,26 @@ class Settings(BaseSettings):
     # Upload constraints
     MAX_UPLOAD_SIZE_MB: int = 10
 
+    # Authentication & Roles
+    AUTH_PROVIDER: str = "local"  # "local" or "cognito"
+    JWT_SECRET_KEY: str = "finguard-ai-super-secret-jwt-key-for-local-development-change-in-prod"
+    JWT_ALGORITHM: str = "HS256"
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 120
+    JWT_ISSUER: str = "finguard-ai"
+    JWT_AUDIENCE: str = "finguard-app"
+
+    # AWS Cognito Configuration (used when AUTH_PROVIDER == "cognito")
+    AWS_REGION: str = "us-east-1"
+    COGNITO_USER_POOL_ID: str = ""
+    COGNITO_APP_CLIENT_ID: str = ""
+
+    # Storage & Database Backend ("local" or "aws")
+    STORAGE_BACKEND: str = "local"
+    LOCAL_DB_PATH: str = "data/finguard.db"
+    DYNAMODB_TABLE_PREFIX: str = "finguard"
+    S3_BUCKET_NAME: str = ""
+    S3_PRESIGNED_EXPIRY_SECONDS: int = 3600
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
@@ -46,6 +66,14 @@ class Settings(BaseSettings):
     def resolved_datasets_dir(self) -> Path:
         base_path = Path(__file__).resolve().parent.parent
         candidate = Path(self.DATASETS_BASE_DIR)
+        if candidate.is_absolute():
+            return candidate
+        return (base_path / candidate).resolve()
+
+    @property
+    def resolved_local_db_path(self) -> Path:
+        base_path = Path(__file__).resolve().parent.parent
+        candidate = Path(self.LOCAL_DB_PATH)
         if candidate.is_absolute():
             return candidate
         return (base_path / candidate).resolve()

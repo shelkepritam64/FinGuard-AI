@@ -102,6 +102,20 @@ FinGuard-AI/
    ```
    The backend API will be available at `http://127.0.0.1:8000/api/health` and docs at `http://127.0.0.1:8000/docs`.
 
+7. **Bootstrap Initial Administrator:**
+   To securely provision the initial administrator account (without exposing public registration):
+   ```bash
+   # Configurable email (e.g. admin123@gmail.com)
+   python scripts/seed_admin.py --email admin123@gmail.com
+   ```
+   You will be securely prompted for a password using `getpass` (no terminal echo). The password must have at least 8 characters and include uppercase, lowercase, and numeric digits.
+
+8. **Reset Administrator Password Safely:**
+   If access recovery is needed for an existing administrator:
+   ```bash
+   python scripts/seed_admin.py --email admin123@gmail.com --reset-password
+   ```
+
 ---
 
 ### B. Running the Frontend Application

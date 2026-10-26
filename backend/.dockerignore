@@ -1,0 +1,31 @@
+# Git & IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Environment files and credentials
+.env
+.env.*
+*.env.local
+
+# Python caches & tests
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.coverage
+htmlcov
+tests
+
+# Local databases and logs
+*.db
+*.log
+data/finguard.db
+data/reports/*
+
+# Virtual environments
+venv
+.venv
+env

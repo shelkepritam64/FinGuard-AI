@@ -135,3 +135,94 @@ export const MODEL_FAMILY_LABELS: Record<ModelFamily, string> = {
   Autoencoder: 'Autoencoder Anomaly Detection',
   LSTM: 'LSTM Sequence Model',
 };
+
+/* ── Auth & Users ── */
+
+export type UserRole = 'user' | 'admin';
+export type UserStatus = 'active' | 'suspended';
+
+export interface UserProfile {
+  id: string;
+  email: string;
+  full_name: string;
+  role: UserRole;
+  status: UserStatus;
+  created_at: string;
+  last_activity?: string | null;
+  screening_count: number;
+  csv_count: number;
+}
+
+export interface TokenResponse {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  role: UserRole;
+  user_id: string;
+  email: string;
+  full_name: string;
+}
+
+export interface AuditLogEntry {
+  id: string;
+  timestamp: string;
+  actor_email: string;
+  action: string;
+  target_email?: string;
+  details?: string;
+}
+
+export interface AdminAnalytics {
+  summary: {
+    total_screenings: number;
+    total_csv_screenings: number;
+    total_users: number;
+    active_users: number;
+    active_users_7d: number;
+    active_users_30d: number;
+    admin_users: number;
+    api_errors: number;
+    system_health: string;
+  };
+  by_model: Array<{
+    model_id: string;
+    dataset_id: string;
+    call_count: number;
+    total_transactions: number;
+    total_flagged: number;
+    successful_requests?: number;
+    failed_requests?: number;
+  }>;
+  timeline: Array<{
+    date: string;
+    event_count: number;
+    total_volume: number;
+    failed_count?: number;
+  }>;
+}
+
+/* ── Screening History ── */
+
+export interface ScreeningHistoryItem {
+  id: string;
+  user_id: string;
+  screening_type: string;
+  dataset_id: string;
+  model_id: string;
+  score_type: string | null;
+  prediction_score: number | null;
+  threshold: number | null;
+  risk_classification: string | null;
+  request_status: string;
+  row_count: number;
+  flagged_count: number;
+  timestamp: string;
+}
+
+export interface ScreeningHistoryResponse {
+  total: number;
+  offset: number;
+  limit: number;
+  items: ScreeningHistoryItem[];
+}
+

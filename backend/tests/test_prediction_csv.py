@@ -119,3 +119,32 @@ def test_csv_target_columns_ignored():
     response = client.post("/api/predict/csv", data=data, files=files)
     assert response.status_code == 200
     assert response.json()["total_rows"] == 2
+
+
+def test_csv_binary_file_rejected():
+    """Verify binary content disguised as CSV is rejected."""
+    binary_data = b"\x00\x01\x02\xFF\xFE\x00\x00PNG\x00\x00\x00"
+    files = {"file": ("malicious.csv", io.BytesIO(binary_data), "text/csv")}
+    data = {
+        "dataset_id": "credit_card_dataset_1",
+        "model_id": "credit_1_xgboost"
+    }
+    response = client.post("/api/predict/csv", data=data, files=files)
+    assert response.status_code == 400
+    assert "binary data" in response.json()["detail"].lower() or "utf-8" in response.json()["detail"].lower()
+
+
+def test_csv_oversized_file_rejected():
+    """Verify uploads exceeding max allowed size are rejected."""
+    # Create fake oversized content (> 10MB)
+    fake_chunk = b"distance_from_home,used_chip\n" + b"1.0,1.0\n" * 1000
+    oversized_data = b"0" * (11 * 1024 * 1024)
+    files = {"file": ("huge.csv", io.BytesIO(oversized_data), "text/csv")}
+    data = {
+        "dataset_id": "credit_card_dataset_1",
+        "model_id": "credit_1_xgboost"
+    }
+    response = client.post("/api/predict/csv", data=data, files=files)
+    assert response.status_code == 400
+    assert "exceeds maximum upload size" in response.json()["detail"]
+
