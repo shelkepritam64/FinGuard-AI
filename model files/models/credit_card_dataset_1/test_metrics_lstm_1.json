@@ -1,0 +1,12 @@
+{
+    "dataset_number": 1,
+    "model": "LSTM feature-sequence experiment",
+    "experiment_note": "Features were treated as a sequence. This is not customer transaction-history modeling.",
+    "accuracy": 0.9800733333333334,
+    "precision": 0.9042901653750899,
+    "recall": 0.8633867276887872,
+    "f1_score": 0.8833652007648184,
+    "roc_auc": 0.9916387277273467,
+    "pr_auc": 0.9500028122387165,
+    "decision_threshold": 0.5917874574661255
+}

@@ -1,0 +1,16 @@
+{
+    "dataset_number": 2,
+    "model_name": "PaySim MLP",
+    "target_column": "isFraud",
+    "feature_columns": [
+        "step",
+        "amount",
+        "type_CASH_IN",
+        "type_CASH_OUT",
+        "type_DEBIT",
+        "type_PAYMENT",
+        "type_TRANSFER"
+    ],
+    "scaler_file": "scaler_neural_networks_2.pkl",
+    "decision_threshold": 0.9925500154495239
+}

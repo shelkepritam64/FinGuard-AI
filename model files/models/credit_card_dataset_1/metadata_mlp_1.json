@@ -1,0 +1,16 @@
+{
+    "model_name": "MLP Credit Card Fraud Detection",
+    "dataset_number": 1,
+    "feature_columns": [
+        "distance_from_home",
+        "distance_from_last_transaction",
+        "ratio_to_median_purchase_price",
+        "repeat_retailer",
+        "used_chip",
+        "used_pin_number",
+        "online_order"
+    ],
+    "scaler_file": "scaler_neural_networks_1.pkl",
+    "target_column": "fraud",
+    "decision_threshold": 0.9056363701820374
+}

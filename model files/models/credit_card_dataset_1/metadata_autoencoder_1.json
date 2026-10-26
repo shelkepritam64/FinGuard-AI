@@ -1,0 +1,23 @@
+{
+  "dataset_id": "credit_card_dataset_1",
+  "model_type": "autoencoder",
+  "model_filename": "autoencoder_model_1.keras",
+  "scaler_filename": "scaler_autoencoder_1.pkl",
+  "target_column": "fraud",
+  "normal_class": 0,
+  "fraud_class": 1,
+  "feature_columns": [
+    "distance_from_home",
+    "distance_from_last_transaction",
+    "ratio_to_median_purchase_price",
+    "repeat_retailer",
+    "used_chip",
+    "used_pin_number",
+    "online_order"
+  ],
+  "threshold": 0.006319875903427601,
+  "score_type": "mean_squared_reconstruction_error",
+  "decision_rule": "flag_for_review_if_reconstruction_error_greater_than_or_equal_to_threshold",
+  "input_dtype": "float32",
+  "training_method": "trained_on_legitimate_training_transactions_only"
+}

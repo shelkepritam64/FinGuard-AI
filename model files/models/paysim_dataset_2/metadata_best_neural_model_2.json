@@ -1,0 +1,19 @@
+{
+  "dataset_id": "paysim_dataset_2",
+  "selected_model": "MLP",
+  "model_filename": "best_neural_model_2.keras",
+  "target_column": "isFraud",
+  "threshold": 0.9925500154495239,
+  "input_format": "tabular",
+  "feature_columns": [
+    "step",
+    "amount",
+    "type_CASH_IN",
+    "type_CASH_OUT",
+    "type_DEBIT",
+    "type_PAYMENT",
+    "type_TRANSFER"
+  ],
+  "scaler_filename": "scaler_neural_networks_2.pkl",
+  "selection_note": "MLP selected as the working neural model. LSTM sequence modelling was not used because the current origin-account grouping did not provide suitable histories."
+}

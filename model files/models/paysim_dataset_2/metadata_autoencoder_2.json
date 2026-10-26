@@ -1,0 +1,31 @@
+{
+  "dataset_id": "paysim_dataset_2",
+  "model_type": "autoencoder",
+  "model_filename": "autoencoder_model_2.keras",
+  "scaler_filename": "scaler_autoencoder_2.pkl",
+  "target_column": "isFraud",
+  "normal_class": 0,
+  "fraud_class": 1,
+  "feature_columns": [
+    "step",
+    "amount",
+    "type_CASH_IN",
+    "type_CASH_OUT",
+    "type_DEBIT",
+    "type_PAYMENT",
+    "type_TRANSFER"
+  ],
+  "transaction_types": [
+    "CASH_IN",
+    "CASH_OUT",
+    "DEBIT",
+    "PAYMENT",
+    "TRANSFER"
+  ],
+  "threshold": 0.0790452710390086,
+  "score_type": "mean_squared_reconstruction_error",
+  "decision_rule": "flag_for_review_if_reconstruction_error_greater_than_or_equal_to_threshold",
+  "input_dtype": "float32",
+  "training_method": "trained_on_legitimate_training_transactions_only",
+  "sampling_note": "Legitimate rows were sampled from CSV chunks while fraud rows were retained. Metrics describe this sampled dataset, not the original transaction population."
+}

@@ -1,0 +1,20 @@
+{
+    "dataset_number": 1,
+    "selected_model": "MLP",
+    "model_file": "best_neural_model_1.keras",
+    "scaler_file": "best_neural_scaler_1.pkl",
+    "feature_columns": [
+        "distance_from_home",
+        "distance_from_last_transaction",
+        "ratio_to_median_purchase_price",
+        "repeat_retailer",
+        "used_chip",
+        "used_pin_number",
+        "online_order"
+    ],
+    "target_column": "fraud",
+    "decision_threshold": 0.9056363701820374,
+    "selection_metric": "validation PR-AUC",
+    "validation_pr_auc": 0.999439315286967,
+    "note": "Selected from eligible neural models using validation data. The Dataset 1 LSTM experiment is not treated as temporal transaction-history modeling."
+}

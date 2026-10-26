@@ -1,0 +1,17 @@
+{
+    "model_name": "XGBoost PaySim Fraud Detection",
+    "dataset": "PaySim Synthetic Financial Transactions",
+    "dataset_number": 2,
+    "target_column": "isFraud",
+    "feature_columns": [
+        "step",
+        "amount",
+        "type_CASH_IN",
+        "type_CASH_OUT",
+        "type_DEBIT",
+        "type_PAYMENT",
+        "type_TRANSFER"
+    ],
+    "decision_threshold": 0.5248706936836243,
+    "best_iteration": 0
+}
